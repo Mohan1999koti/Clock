@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-size: 100% 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+           background-color: #358934;
+        }
+        #dis
+        {
+            width: 60vw;
+            height: 80vh;
+            display:flex;
+            flex-direction: column;
+            background-color: rgba(163, 162, 162, 0.738);
+            text-align: center;
+            position: relative;
+            top: 50px;
+            border-radius: 5% 5%;
+            box-shadow: 5px 5px 10px black;
+        }
+        #Time{
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 100px;
+            color: royalblue;
+            text-shadow: 2px 2px 0px rgb(121, 91, 91), -2px -2px 0px rgba(0, 0, 0, 0.423);
+        }
+        #Day{
+            font-size: 60px;
+            color: rgba(13, 79, 64, 0.429);
+            text-shadow: 2px 2px 5px rgb(12, 80, 46);
+            transition: all 2s;
+        }
+        #Day:hover{
+            letter-spacing: 80px;
+            border-bottom: 2px solid black;
+            border-top: 2px groove black;
+        }
+        #Date{
+            font-size: 60px;
+            color: tomato
+        }
+    </style>
+</head>
+<body onload="display()" id="con">
+<div id="dis">
+    <h1 id="Time"></h1>
+    <h1 id="Day"></h1>
+    <h1 id="Date"></h1>
+</div>
+    <script>
+        function display()
+        { 
+        var date = new Date()
+        var hh = date.getHours()
+        var mm = date.getMinutes()
+        var ss = date.getSeconds()
+        var am_pm ="AM"
+        if(hh>=12)
+        {
+            am_pm ="PM"
+            if(hh>=13)
+            {
+                hh-=12
+            } 
+        }
+        document.getElementById("Time").innerHTML=hh+":"+mm+":"+ss+" "+am_pm
+        var dd = date.getDate()
+        var mo = date.getMonth()
+        var yy = date.getFullYear()
+        switch(mo)
+        {
+            case 0: mo = "Jan"
+            break;
+            case 1: mo ="Feb"
+            break;
+            case 2: mo ="Mar"
+            break;
+            case 3: mo ="Apr"
+            break;
+            case 4: mo ="May"
+            break;
+            case 5: mo ="Jun"
+            break;
+            case 6: mo ="Jul"
+            break;
+            case 7: mo = "Aug"
+            break;
+            case 8: mo ="Sep"
+            break;
+            case 9: mo = "Oct"
+            break;
+            case 10: mo= "Nov"
+            break;
+            case 11: mo ="Dec"
+            break;
+        }
+        document.getElementById("Date").innerHTML=dd+"/"+mo+"/"+yy
+        var dayy = date.getDay()
+        switch(dayy)
+        {
+            case 0: dayy = "Sun"
+            break;
+            case 1: dayy ="Mon"
+            break;
+            case 2: dayy ="Tue"
+            break;
+            case 3: dayy ="Web"
+            
+            case 4: dayy ="Thu"
+            document.getElementById("con").style.backgroundColor="gray"
+            break;
+            case 5: dayy ="Friday"
+            
+            break;
+            case 6: dayy ="Sat"
+            break;
+        }
+        document.getElementById("Day").innerHTML=dayy
+        var te = setTimeout(function(){display()},1000)
+        }
+        function greeting()
+        {
+            var gre = new Date()
+            var hh = gre.getHours()
+            if(hh>=6 && hh<12)
+            {
+            window.alert("Good Morning...!")
+            }
+            else if(hh>=12 && hh<16)
+            {
+                window.alert("Good Afternoon...!")
+            }
+            else if(hh>=16 && hh<19)
+            {
+                window.alert("Good Evening...!")
+            }
+            else{
+                window.alert("Good Night...!")
+            }
+        }
+        greeting()
+    </script>
+   
+</body>
+</html>
